@@ -9,3 +9,8 @@ int main(){
     printf("a=%d  b=%d\n",a,b);
     return 0;
 }
+//法二：加减法
+a=a+b;
+b=a-b;
+a=a-b;
+//缺点：a+b可能会溢出
