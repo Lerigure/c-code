@@ -1,0 +1,24 @@
+//比较大小
+#include<stdio.h>
+int main(){
+	int a,b,c,min;
+    scanf("%d %d %d",&a,&b,&c);
+    if(a>b){
+        min = a;
+        a =b;
+        b = min;
+    }
+    if(a>c){
+        min = a;
+        a = c;
+        c = min;
+    }
+    if(b>c){
+        min = b;
+        b = c;
+        c = min;
+    }
+    printf("%d->%d->%d",a,b,c);
+    return 0;
+} 
+//将3个整数从小到大输出 
