@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main() {
+	int n,i,total,day;
+	scanf("%d", &n);
+	total = 1;
+	day = n;
+	while (day > 1) {
+		total = (total + 1) * 2;
+		day--;
+	}
+	printf("%d\n", total);
+	return 0;
+}
