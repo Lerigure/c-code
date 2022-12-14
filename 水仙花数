@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+	int n,j,i;
+	double start,reigon;
+	scanf("%d",&n);
+	start=pow(10,n-1);
+	reigon=pow(10,n);
+	for(i=start;i<=reigon;i++){
+		int sum=0,temp=i;
+		while(sum<=i&&temp!=0){
+			int mod=temp%10;
+			int k=1;
+			for(j=1;j<=n;j++){
+				k=k*mod;
+			}
+			sum=sum+k;
+			temp/=10;
+		}
+		if(sum==i)
+			printf("%d\n",i);
+	}
+	return 0;
+}
+//水仙花数一个N位正整数（N≥3），它的每个位上的数字的N次幂之和等于它本身 
