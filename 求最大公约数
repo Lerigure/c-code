@@ -1,0 +1,22 @@
+//两个数最大公约数 辗转相除法 
+/*采用Euclid（欧几里德）算法来求最大公约数，其算法是：
+    (1) 输入两个正整数m和n。
+    (2) 用m除以n，余数为r，如果r等于0，则n是最大公因子，算法结束，否则(3)。
+    (3) 把n赋给m，把r赋给n，转(2)。*/
+#include <stdio.h>
+int main ( )
+{
+	int m, n, r,t;
+	printf ("Please input two positive integer: ");
+	scanf ("%d%d", &m, &n);	
+
+	r = m % n;
+	while (r != 0)
+	{    	
+		m = n;
+		n = r;
+		r = m % n;   //求余数
+	}
+	printf ("Their greatest common divisor is %d\n", n);
+	return 0;
+}
