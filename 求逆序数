@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main(){
+	int number,t_number=0;
+	scanf("%d",&number);
+	while(number){
+		t_number=t_number*10+number%10;
+		number/=10;
+	} 
+	printf("%d",t_number);
+	return 0;
+}
+//求逆序数 
