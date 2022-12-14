@@ -1,0 +1,16 @@
+#include<stdio.h>
+int main() {
+	int n,x5,x2,x1,count=0;
+	scanf("%d", &n);
+	for (x5 = 1; x5 <= n / 5; x5++) {
+		for (x2 = 1; x2 < n / 2; x2++) {
+			x1 = n - x5 * 5 - x2 * 2;
+			if (x1 > 0) {
+				printf("fen5:%d, fen2:%d, fen1:%d, total:%d\n", x5, x2, x1,x1+x2+x5);
+				count++;
+			}
+		}
+	}
+	printf("count = %d\n", count);
+	return 0;
+}
