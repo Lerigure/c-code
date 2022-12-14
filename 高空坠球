@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main(){
+	int n;
+	double h,half,hs,l;
+	scanf("%lf %d",&h,&n);
+	hs=h;
+	half=h/2.0;
+	for(int i=2;i<=n;i++){
+		l+=half*2;
+		h=h/2;
+	}
+    if(n==0)
+	    printf("%.1f %.1f\n",0,0);
+	else
+        printf("%.1f %.1f\n",l,half);
+    return 0; 
+}
+//高空坠球 
