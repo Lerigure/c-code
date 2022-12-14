@@ -1,0 +1,24 @@
+#include <stdio.h>
+int reverse( int number );
+int main()
+{
+    int n;
+
+    scanf("%d", &n);
+    printf("%d\n", reverse(n));
+
+    return 0;
+}
+int reverse( int number ){
+    int flag=1;
+    int result = 0;
+    if(number<0){
+        flag=-1;
+        number=-number;
+    }
+    while(number!=0){
+        result=result*10+number%10;
+        number=number/10;
+    }
+    return flag*result;
+}
