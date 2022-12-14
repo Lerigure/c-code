@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main(){
+	int i,k=0;
+	char arr[80];
+	while((arr[k]=getchar())!='\n'){
+		k++;
+	}
+	arr[k]='\0';
+	i=0;
+	k=k-1;
+	while(i<k){
+		if(arr[i]!=arr[k]){
+			break;
+		}
+		i++;
+		k--;
+	}
+	if(i>=k)printf("yes");
+	else printf("no");
+	return 0;
+} 
