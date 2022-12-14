@@ -1,0 +1,29 @@
+//搬砖问题穷举法 
+#include<stdio.h>
+int main(){
+	int n,men,women,children;
+	scanf("%d",&n);
+	double limit_m=n/3,limit_w=n/2;
+	for(men=0;men<=limit_m;men++){
+		for(women=0;women<=limit_w;women++){
+			children=n-men-women;
+			if(men*3+women*2+children*0.5==n)
+			printf("men=%d,women=%d,chhildren=%d\n",men,women,children);
+		}
+	}
+}
+//找零钱 
+/*flag = 1;      //flag表示是否中止嵌套循环 
+printf("Enter money: ");    
+scanf("%d", &money);
+for (n5 = money/5; (n5 >= 0) && (flag == 1); n5--)
+     for (n2 = (money-n5*5)/2; (n2 >= 0) && (flag == 1); n2--)
+          for (n1 = money-n5*5-n2*2; (n1 >=0) && (flag == 1); n1--)
+               if ((n5*5 + n2*2 + n1) == money) {
+                    printf("fen5:%d, fen2:%d, fen1:%d, total:%d\n", n5, n2,
+                                 n1, n1+n2+n5);
+                    //置flag为 0，则三重循环的条件都不满足，中止嵌套循环 
+                    flag = 0; 	
+               }
+			   */
+
