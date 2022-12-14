@@ -1,0 +1,23 @@
+//生成16进制字符串 
+/*k = 0;    k：新字符串hexad的下标 
+for ( i = 0; str[i] != '\0'; i++ ){
+   if ( str[i] >= '0' && str[i] <= '9' || 
+        str[i] >= 'a' && str[i] <= 'f' ||
+        str[i] >= 'A' && str[i] <='F' ){ 
+           hexad[k] = str[i];       //放入新字符串 
+           k++;         
+     }
+}
+hexad[k] = '\0';  */
+/*转换成10进制 
+number = 0;                  //存放十进制数，先清0 
+for ( i = 0; hexad[i] !='\0'; i++ ){      //逐个转换 
+if ( hexad[i] >= '0' && hexad[i] <= '9' ){
+number = number * 16 + hexad[i] - '0';
+}else if ( hexad[i] >= 'A' && hexad[i] <= 'F' ){
+number = number * 16 + hexad[i] - 'A' + 10;
+ }else if ( hexad[i] >= 'a' && hexad[i] <= 'f' ){
+number = number * 16 + hexad[i] - 'a' + 10;
+}
+}
+*/
