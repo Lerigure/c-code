@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main() {
+	int n,mon,x,x1,x2;
+	scanf("%d", &n);
+	if (n == 1) printf("%d", 1);//如果最后只有1对，则一个月就可以
+	else {
+		x1 = 1;
+		x2 = 1;
+		x = x1 + x2;
+		mon = 3;
+		while(x<n){
+			x1 = x2;
+			x2 = x;
+			x = x1 + x2;
+			mon++;
+		}
+		printf("%d\n", mon);
+	}
+	return 0;
+}
