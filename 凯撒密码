@@ -1,0 +1,23 @@
+//凯撒密码
+ # define M 26
+…
+scanf(“%d”, &offset);//偏移量
+if(offset >= M)  
+offset = offset % M;  /* 移位效果相当于取其余数 */ 
+/* 加密 */
+for(i = 0; str[i] != '\0'; i++){ 
+if(str[i] >= ‘A’ && str[i] <= ‘Z’){    //大写字母
+if((str[i] - 'A' + offset) < M) {
+str[i] = str[i] + offset;
+}else{	                                        /* 如果向后越界 */
+str[i] = str[i] - (M - offset); 	/* 循环移位 */
+}
+}else if(str[i] >= ‘a’ && str[i] <= ‘z’){     // 小写字母
+if((str[i] - 'a' + offset) < M) {
+str[i] = str[i] + offset;
+}else{
+str[i] = str[i] - (M - offset); 
+}
+}
+}
+//(str-'A'+offset) %M+'A'
