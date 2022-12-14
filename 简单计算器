@@ -1,0 +1,31 @@
+#include"stdio.h"
+int main()
+{
+    int value1,value2;
+    int sum=0;
+    char ch;
+    scanf("%d",&value1);
+    while((ch=getchar())!='=')
+    {
+        scanf("%d",&value2);
+        if(ch=='/'&&value2==0){
+                printf("ERROR\n");
+                return 0;
+ 
+        }
+        switch(ch)
+        {
+            case '+':sum=value1+value2;break;
+            case '-':sum=value1-value2;break;
+            case '*':sum=value1*value2;break;
+            case '/':sum=value1/value2;break;
+            default:printf("ERROR\n");return 0;
+ 
+        }
+        value1=sum;
+ 
+ 
+    }
+    printf("%d\n",value1);
+    return 0;
+}
