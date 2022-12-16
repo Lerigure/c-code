@@ -1,0 +1,41 @@
+# include <stdio.h>
+struct student {                      /* 学生信息结构定义 */
+     int num;                              /* 学号 */
+     char name[10];                  /* 姓名 */
+     int computer, english, math;      /* 三门课程成绩 */
+     double average;                /* 个人平均成绩 */
+}; 
+int  main(void) {   
+    struct student students[50], temp;   /* 定义结构数组 */
+    int i, j, k, n;
+    printf ("Input n: ");
+    scanf ("%d", &n);
+for (i = 0; i < n; i++)
+{      printf ("Input the info of No. %d: \n", i+1);
+       printf ("number:");
+       scanf ("%d", &students[i].num);
+       printf ("name:");
+       scanf ("%s", &students[i].name);
+       printf ("math score:");
+       scanf ("%d", &students[i].math);
+       printf ("english score:");
+       scanf ("%d", &students[i].english);
+       printf ("compter score:");
+       scanf ("%d", &students[i].computer);
+       students[i].average = (students[i].math +      	students[i].english + students[i].computer) / 3.0;
+}
+for ( i = 0; i < n-1; i++ ) {   //选择排序对结构数组排序
+        k = i;
+        for (j = i+1; j < n; j++ ) 	
+            if (students[j].average > students[k].average)
+                k = j;
+        temp = students[k];		/* 交换数组元素 */
+        students[k] = students[i];
+        students[i] = temp;
+    }
+    printf ("num\t name\t average\n");  //输出排序后的信息 
+    for (i = 0; i < n; i++ ) {
+        printf ("%d\t%s\t %.2lf\n", students[i].num, 				students[i].name,  students[i].average);
+    }
+    return 0;
+}
