@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int fib( int n );
+void PrintFN( int m, int n );
+    
+int main()
+{
+    int m, n, t;
+
+    scanf("%d %d %d", &m, &n, &t);
+    printf("fib(%d) = %d\n", t, fib(t));
+    PrintFN(m, n);
+
+    return 0;
+}
+
+/* 你的代码将被嵌在这里 */
+
+int fib(int n)
+{
+	int temp;
+	int num = 0;
+	int sum = 1;
+
+	for(int i = 1; i < n; i++){
+		temp = sum;
+		sum += num;
+		num = temp;
+	}
+	return sum;
+}
+void PrintFN(int m, int n)
+{
+	int state = -1;
+	int nums[30] = {0,1,1};	
+	int count = 3;
+	int lk = 0;	
+
+	for(int i = 3; i < 30; i++){
+		nums[i] = nums[i - 1] + nums[i - 2];	
+		count++;
+	}
+
+	for(int i = m; i <= n; i++){
+		for(int j = 0; j < count; j++){
+			if(i == nums[j]){
+				if(lk != 0)
+					printf(" ");
+				printf("%d",i);
+				state = 1;
+				lk++;
+			}
+		}
+	}
+
+	if(state == -1)
+		printf("No Fibonacci number");
+}
