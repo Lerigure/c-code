@@ -1,0 +1,108 @@
+# include <stdio.h>
+# define  MAXN 100
+	
+int Count = 0;
+void select(int a[], int option, int value); 
+void input_array(int a[ ]);	
+void print_array(int a[ ]);
+void insert(int a[ ], int value);
+void remove(int a[ ], int value);
+void query(int a[ ], int value);
+	
+int main(void) {
+        int option, value, a[MAXN];
+
+        /* 调用函数输入有序数组 a */
+        input_array(a);    
+printf("[1] Insert\n");   
+      printf("[2] Delete\n");
+      printf("[3] Query\n"); 
+      printf("[Other option] End\n");
+      while (1) {
+	printf("Input option: ");  
+	scanf("%d", &option); 
+	if (option < 1 || option > 3) 
+	        break;
+	printf("Input an element: ");   	scanf("%d", &value);
+	/* 调用控制函数 */
+	select(a, option, value); 	
+        	printf("\n");
+        }
+        printf("Thanks.");	
+        return 0;
+}
+/* 控制函数 */
+void select(int a[ ], int option, int value) {
+    switch (option) {
+        case 1:
+            insert(a, value);    /* 调用插入函数在有序数组 a 中插入元素value */
+            break;
+        case 2:
+            remove(a, value);  /* 调用删除函数在有序数组 a 中删除元素value */
+            break;
+        case 3:
+            query(a, value);     /* 调用查询函数在有序数组 a 中查找元素value */
+            break;
+    }
+}
+void input_array(int a[ ]) {		/* 有序表输入函数 */
+        printf("Input the number of array elements: ");
+        scanf("%d", & Count);
+        printf("Input an ordered array element: ");
+        for (int i = 0; i < Count; i ++) {
+                scanf("%d", &a[i]);
+        }
+}
+void print_array(int a[ ]) {	/* 有序表输出函数 */
+        printf("The ordered array a is: ");
+        for (int i = 0; i < Count; i ++) { 
+        /* 相邻数字间空格分隔，行末无空格 */
+                if (i == 0) 	
+                        printf("%d", a[i]);
+                else
+                        printf(" %d", a[i]);
+        }
+}
+void insert(int a[ ], int value) {	/* 有序表插入函数 */
+    int i, j;
+    for (i = 0; i < Count; i++) {    /* 定位：待插入的位置即退出循环时i的值 */
+          if(value < a[i])
+                break;
+    }
+    for (j = Count -1; j >= i; j--) {	/* 腾位：将a[i]~a[Count-1]向后顺移一位 */
+          a[j+1] = a[j];
+    }
+    a[i] = value; 	                      /* 插入：将value 的值赋给a[i] */
+    Count++;	                      /* 增1：数组a中待处理的元素数量增1 */
+    print_array (a);	         /* 调用输出函数，输出插入后的有序数组a */
+}
+void remove(int a[ ], int value) {	 /* 有序表删除函数 */
+    int i, index = -1; 	/* index的值为-1表示没找到，否则表示找到 */
+    for(i = 0; i < Count; i++) 	/* 定位：找到则用index记录其下标 */
+        if(value == a[i]) {
+            index = i;     break;                   
+        }
+    if(index == -1)  		/* 没找到，则输出相应的信息 */
+        printf("Failed to find the data, deletion failed.");
+    else {			/* 找到，则删除a[index] */
+        for(i = index; i < Count - 1; i++) 	
+            a[i] = a[i+1];          /* 将a[index+1]~ a[Count-1] 向前顺移一位 */
+        Count --;		   /* 减1：数组a中待处理的元素数量减1 */
+        print_array (a);          /* 调用输出函数，输出删除后的有序数组a */
+    }
+}
+void query(int a[ ], int value) {  //折半查找
+    int mid, left = 0, right = Count - 1; 	/* 开始时查找区间为整个数组 */
+    while (left <= right){               
+        mid = (left + right) / 2;        /* 得到中间位置 */
+        if (value == a[mid]){           /* 查找成功，输出下标，函数返回 */
+            printf("The index is: %d", mid);
+            return;
+        }
+        else if (value < a[mid]) 	/* 缩小查找区间为前半段，right前移 */
+            right = mid - 1;
+        else		             /* 缩小查找区间为后半段，left后移 */
+            left = mid + 1; 
+    }    
+    printf( "This element does not exist.");       /* value不在数组a中 */	
+}
