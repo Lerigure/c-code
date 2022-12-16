@@ -1,0 +1,60 @@
+//输出指定范围内的完数
+#include <stdio.h>
+
+int factorsum( int number );
+void PrintPN( int m, int n );
+    
+int main()
+{
+    int m, n;
+
+    scanf("%d %d", &m, &n);
+    if ( factorsum(m) == m ) printf("%d is a perfect number\n", m);
+    if ( factorsum(n) == n ) printf("%d is a perfect number\n", n);
+    PrintPN(m, n);
+
+    return 0;
+}
+
+/* 你的代码将被嵌在这里 */
+int factorsum( int number )
+{
+    int sum=0;
+    int i;
+    for(i=1;i<number;i++)
+    {
+        if(number%i==0)
+        {
+            sum+=i;
+        }
+    }
+    if(sum==i)
+    {
+        return sum;
+    }
+}
+void PrintPN( int m, int n )
+{
+    int flag=0,sum=0;
+    for(int i=m;i<=n;i++)
+    {
+        if(factorsum(i) == i)//使用函数看i是否为完数，是完数加因子 下面就不要判断该因子是否为完数的因子了
+        {
+            printf("%d = 1",i);  //是就输出 i=1 因为只要是完数相加的第一个都是1
+            for(int j=2;j<i;j++) //求因子
+            {
+                if(i%j==0)
+                {
+                    printf(" + %d",j); //因子相加
+                }
+            }
+            printf("\n");//一行后输出换行符
+            flag=1;//标识符
+        }
+ 
+    }
+    if(flag==0)
+    {
+        printf("No perfect number");
+    }
+} 
