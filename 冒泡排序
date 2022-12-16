@@ -1,0 +1,46 @@
+void bubble (int a[ ], int n);
+int main (void)
+{  int n, a[10]; int i; 
+  printf ("Enter n (n<=10): ");
+  scanf ("%d", &n);
+  printf ("Enter %d integers: ", n);
+  for (i = 0; i < n; i++){
+      scanf ("%d", &a[i]);
+   }
+  bubble(a, n);
+  printf("After sorted: ");
+  for (i = 0; i < n; i++){
+     printf("%3d", a[i]);}
+ return 0;
+} 
+void bubble(int a[],int n)
+{
+	int i, j, t;
+	for (i=1; i<n; i++)  //共n-1趟排序
+		for (j=0; j<n-i; j++)  //每趟共n-i次比较
+			if (a[j]>a[j+1])
+			{	
+				t = a[j]; 
+				a[j] = a[j+1]; 
+				a[j+1] = t;   
+			}
+}
+上面有缺点：对已排好的序列还要进行操作
+void bubble(int a[],int n)
+{
+	int i, j, t, flag;
+	for (i=1; i<n; i++)     //共n-1趟排序
+    	{    
+		flag = 0;  //flag初始化
+		for (j=0; j<n-i; j++) //每趟共n-i次比较
+		{	if (a[j] > a[j+1])  //相邻两个数比较
+			{   
+				t=a[j];
+				a[j]=a[j+1]; 
+				a[j+1]=t;  
+				flag = 1; 
+			}
+		}
+		if (flag==0)  break;  //若此趟排序过程中无交换，退出
+	}	
+}
