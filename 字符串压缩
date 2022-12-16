@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define MAXLINE 80
+void zip(char *p);
+int main(void)
+{
+char line[MAXLINE];
+printf("Input the string: ");
+gets(line);
+zip(line);
+puts(line);
+return 0;
+}
+void zip(char *p)
+{
+   char *q = p;
+   int n;
+   while(*p != '\0'){
+       n = 1;  //统计连续重复字符个数
+       while( *p == *(p+n)) {
+           n++; 
+       }
+       if(n >= 10){ 
+           *q++ = (n / 10) + ‘0’; //十位
+            *q++ = (n % 10) + ‘0’;   //个位	    
+       } else if(n >= 2){
+            *q++ = n + ‘0’; //转换为字符
+       }
+       *q++ = *(p + n - 1);   //复制字符
+       p = p + n; //指针指向新字符
+   }
+   *q = '\0';     
+}
