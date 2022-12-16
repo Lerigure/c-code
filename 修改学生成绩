@@ -1,0 +1,26 @@
+main()中程序段：
+int course, i, n, num, pos, score;
+struct student students[50];  	 /* 定义结构数组 */
+/* 输入n个学生信息 */
+/* 输入待修改学生信息num, course, score */
+
+pos = update_score(students, n, num, course, score);
+
+/*输出修改后的学生信息*/ 
+int update_score (struct student *p, int n, int num, int course, int score){ 
+int  i, pos;
+for (i = 0; i < n; i++, p++) { 	/* 按学号查找 */
+	if (p->num == num)       break;
+}
+if (i < n) {			/* 找到，修改成绩 */
+     switch (course) {
+            case 1: p->math = score; break;
+            case 2: p->english = score; break;
+            case 3: p->computer = score; break;
+     }
+     pos = i;  	/* 被修改学生在数组中的下标 */
+}
+else        		/* 无此学号 */
+     pos = -1;
+return  pos;
+}
