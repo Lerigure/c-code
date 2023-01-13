@@ -1,0 +1,24 @@
+/* 输出数字金字塔 */
+#include <stdio.h>
+void pyramid (int n);		/* 函数声明 */
+int main (void)
+{   
+	pyramid(5);			/* 调用函数，输出数字金字塔 */
+	return 0;
+}
+void pyramid (int n)               	/* 函数定义 */
+{		
+	int i, j;
+	for (i = 1; i <= n; i++){		/* 需要输出的行数 */
+	    for (j = 1; j <= n-i; j++) 	/* 输出每行左边的空格 */
+		printf(" ");	        
+	    for (j = 1; j <= i; j++)  	/* 输出每行的数字 */ 
+		printf("%d ", i);	              /* 每个数字的后面有一个空格 */ 
+	    putchar ('\n');			    
+	}
+}
+     1
+    2  2
+  3  3  3
+ 4  4  4  4
+5  5  5  5  5
