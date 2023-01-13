@@ -37,3 +37,35 @@ int main(void) {
     else printf ("No!\n"); 
     return 0;
 }
+
+
+int i, limit, m;
+scanf ("%d", &m);  	
+if(m <= 1) printf ("No!\n");
+else if(m == 2) printf ("Yes!\n"); 
+else{ 
+limit = sqrt(m) + 1;  
+for (i = 2; i <= limit; i++)   	
+    if (m % i == 0){
+            break; 
+     }
+if (i > limit) printf ("Yes!\n"); 
+else printf ("No!\n"); 
+}
+
+
+int i, flag, limit, m;
+scanf ("%d", &m);
+if (m <= 1) flag = 0;
+else if(m == 2)  flag = 1;
+else{
+    flag = 1;
+    limit = sqrt(m) + 1;
+    for (i = 2; i <= limit; i++)
+         if (m % i == 0){
+             flag = 0;
+             break;  
+         }
+}
+if (flag == 1) printf ("Yes\n"); 
+else printf ("No\n"); 
