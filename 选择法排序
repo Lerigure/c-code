@@ -1,0 +1,12 @@
+//输入n(n<10)，再输入n个数，用选择法将它们从小到大排序后输出。
+for(k = 0; k < n-1; k++){   
+        index = k;
+        for(i = k + 1; i < n; i++){  
+            if(a[i] < a[index]){
+                 index = i;   
+            }
+        } 
+        temp = a[index]; 
+        a[index] = a[k]; 
+        a[k] = temp;
+}   
