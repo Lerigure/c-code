@@ -1,0 +1,8 @@
+//程序段
+ch = getchar();
+while(ch != '\n'){    while((ch = getchar()) != '\n')
+	if(ch >= 'A' && ch <= 'Z')   ch = ch - 'A' + 'a'; 
+	else if((ch >= 'a' && ch <= 'z' ) ch = ch - 'a' + 'A'; 
+	putchar(ch);
+	ch = getchar(); 
+}
