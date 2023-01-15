@@ -1,0 +1,28 @@
+//结构指针作为函数参数
+//定义一个struct student类型的结构指针，用其实现一个学生信息的输入和输出。
+struct student {                    
+     int num;                           
+     char name[10];  
+     int computer, english, math; 
+     double average;      
+}s, *p;
+p = &s; 
+scanf("%d%s%d%d%d", &p->num, p->name, &p->math, 	&p->english, &p->computer);
+printf("%d %s %d %d %d", p->num, p->name, p->math, 	p->english, p->computer);
+int update_score (struct student *p, int n, int num, int course, int score){ 
+   int  i, pos;
+   for ( i = 0; i < n; i++, p++ ) { 		/* 按学号查找 */
+	 if (p->num == num) break;
+   }
+   if (i < n) {			/* 找到，修改成绩 */
+     switch (course) {
+            case 1: p->math = score; break;
+            case 2: p->english = score; break;
+            case 3: p->computer = score; break;
+     }
+     pos = i;  	/* 被修改学生在数组中的下标 */
+    }
+    else        		/* 无此学号 */
+      pos = -1;
+    return  pos;
+}
