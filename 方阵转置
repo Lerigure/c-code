@@ -16,3 +16,59 @@ int main(){
         }
     }
 } 
+//原地转置
+#include <stdio.h>
+#define MaxSize 50
+typedef struct matrix
+{
+	int data[MaxSize][MaxSize]; //二维数组存储数据
+	int rows;	//矩阵行数
+	int cols;	//矩阵列数
+}Matrix;   //类型定义
+void ReadingMatrix(Matrix *m);	//矩阵读数据
+void TransportMatrix(Matrix *a);	//矩阵转置
+void PrintMatrix(Matrix m);	//输出矩阵
+int main() 
+{	Matrix a;
+	int m, n;
+	do {
+		printf("请输入矩阵的阶数m*n (m>0 && n>0):");
+		scanf("%d%d",&m,&n);
+	}while (m<=0||n<=0);  //读入行数和列数	
+	a.rows = m;
+	a.cols = n;	
+	printf("请输入%d行%d列的矩阵a：\n", m, n);
+	ReadingMatrix(&a);   //调用读入矩阵的函数
+	TransportMatrix(&a); //调用转置矩阵的函数
+	printf("矩阵转置后的结果是：\n");
+	PrintMatrix(a);   //调用输出矩阵的函数
+	return 0;
+}
+void  ReadingMatrix(Matrix *m) //读入矩阵值
+{	int i, j;
+	for (i=0; i<m->rows; i++)
+		for (j=0; j<m->cols; j++)
+			scanf("%d", &(m->data[i][j]));
+}
+void PrintMatrix(Matrix m)   //输出矩阵值
+{	int i, j;
+	for (i=0; i<m.rows; i++)	
+	{	for (j=0; j<m.cols; j++)
+			printf("%d\t", m.data[i][j]);
+		printf("\n");
+	}
+}
+void TransportMatrix(Matrix *a) //转置矩阵
+{	int i, j, temp, n;
+	n = a->rows > a->cols ? a->rows : a->cols;  //取行列的最大值
+	for (i=0; i<n; i++)
+		for (j=0; j<i; j++)    //交换data[i][j]和a[j][i],注意j<i
+		{
+			temp = a->data[i][j];       
+			a->data[i][j] = a->data[j][i];
+			a->data[j][i] = temp;
+		}
+	temp = a->rows;   //行数和列数交换
+	a->rows = a->cols;
+	a->cols = temp;
+}
